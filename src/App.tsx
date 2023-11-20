@@ -1,20 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const [state, setState] = useState(false);
-  setState(true);
-
-  const aFn = useCallback(() => {
-    console.log("1");
-  }, []);
-  useEffect(() => {
-    if (state) {
-      console.log("123");
-      aFn();
-    }
-  }, [aFn, state]);
   return (
     <div className="App">
       <header className="App-header">
