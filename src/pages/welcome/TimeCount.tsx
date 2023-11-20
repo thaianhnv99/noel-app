@@ -61,23 +61,10 @@ const TimeCount = () => {
   return (
     <Box
       sx={{
-        flexBasis: "60%",
-        height: "100%",
-        display: 'flex',
-        justifyContent: 'center',
-        backgroundImage: "url(/images/mc1.jpg)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100%",
-        backgroundPosition: "bottom",
-        backgroundColor: "#fffaf4",
+        marginTop: "1rem",
       }}
     >
-      <Typography
-        sx={{
-          position: "fixed",
-          top: "6rem",
-        }}
-      >
+      <Typography>
         {countTime?.timeLeft
           ? `${countTime?.days} days, ${countTime?.hours} hours, ${countTime?.minutes} minutes, ${countTime?.seconds} second`
           : "Merry christmas"}
