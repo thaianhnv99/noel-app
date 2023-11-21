@@ -46,13 +46,12 @@ jobs:
           step: start
           token: ${{ secrets.GITHUB_TOKEN}}
           env: ${{ fromJson('["Production", "Preview"]')[github.ref != 'refs/heads/master'] }}
-          log: ${{github.ref}}
       - uses: actions/checkout@v3
       # - run: mv .env.example .env
       - uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-args: --prod
+          vercel-args: ${{ fromJson('["--prod", ""]')[github.ref != 'refs/heads/master']}}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           scope: ${{ secrets.VERCEL_ORG_ID }}
