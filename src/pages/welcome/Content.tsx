@@ -9,13 +9,15 @@ const Content = () => {
         width: "100%",
         maxWidth: "500px",
         textAlign: "center",
-        position: "absolute",
-        left: "50%",
-        transform: "translateX(-50%)",
       }}
     >
-      <Typography>
-        Cảm ơn bạn đã ghé thăm, chúc bạn một mùa giáng sinh vui vẻ
+      <Typography variant="h4" fontWeight="500">
+        Join Us For A Christmas Party
+      </Typography>
+      <Typography marginTop="1rem">
+        Wishing you and your family all the best things and timeless treasures
+        on this lovely holiday! Share your endless love and kindness with your
+        nearest and dearest.
       </Typography>
       <TimeCount />
     </Box>

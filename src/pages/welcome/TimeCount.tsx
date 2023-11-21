@@ -21,13 +21,7 @@ const TimeCount = () => {
     }
   }, [currentDate, dateE]);
 
-  const [countTime, setCountTime] = useState<Timer | null>({
-    days: "_",
-    hours: "_",
-    minutes: "_",
-    seconds: "_",
-    timeLeft: true,
-  });
+  const [countTime, setCountTime] = useState<Timer | null>(null);
   const handleGetCountTime = useCallback(() => {
     const timeLeft =
       dateEvent.getTime() >= currentDate.getTime()
@@ -51,6 +45,18 @@ const TimeCount = () => {
     });
   }, [currentDate, dateEvent]);
 
+  const message = useMemo(() => {
+    if (!countTime) {
+      return "";
+    }
+
+    if (countTime && !countTime.timeLeft) {
+      return "Merry christmas";
+    } else {
+      return `${countTime?.days} days, ${countTime?.hours} hours, ${countTime?.minutes} minutes, ${countTime?.seconds} second`;
+    }
+  }, [countTime]);
+
   useEffect(() => {
     const time = setInterval(handleGetCountTime, 1000);
     return () => {
@@ -64,11 +70,7 @@ const TimeCount = () => {
         marginTop: "1rem",
       }}
     >
-      <Typography>
-        {countTime?.timeLeft
-          ? `${countTime?.days} days, ${countTime?.hours} hours, ${countTime?.minutes} minutes, ${countTime?.seconds} second`
-          : "Merry christmas"}
-      </Typography>
+      <Typography>{message}</Typography>
     </Box>
   );
 };
