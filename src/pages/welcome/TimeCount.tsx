@@ -13,19 +13,12 @@ type Timer = {
 const TimeCount = () => {
   const currentDate = new Date();
   const dateE = new Date(currentDate.getFullYear(), 11, 25);
-  const dateEvent = useMemo(() => {
-    if (currentDate.getTime() < dateE.getTime()) {
-      return dateE;
-    } else {
-      return new Date(currentDate.getFullYear() + 1, 11, 25);
-    }
-  }, [currentDate, dateE]);
 
   const [countTime, setCountTime] = useState<Timer | null>(null);
   const handleGetCountTime = useCallback(() => {
     const timeLeft =
-      dateEvent.getTime() >= currentDate.getTime()
-        ? dateEvent.getTime() - currentDate.getTime()
+      dateE.getTime() >= currentDate.getTime()
+        ? dateE.getTime() - currentDate.getTime()
         : 0;
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)).toString();
     const hours = Math.floor(
@@ -43,7 +36,7 @@ const TimeCount = () => {
       seconds,
       timeLeft: !!timeLeft,
     });
-  }, [currentDate, dateEvent]);
+  }, [currentDate, dateE]);
 
   const message = useMemo(() => {
     if (!countTime) {

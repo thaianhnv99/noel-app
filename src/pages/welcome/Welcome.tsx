@@ -2,18 +2,16 @@ import Box from "@mui/material/Box";
 import Content from "./Content";
 import Snowfall from "react-snowfall";
 import Footer from "./Footer";
-import useTheme from "../../hooks/useTheme";
-import { useMediaQuery } from "@mui/material";
 import useScreen from "../../hooks/useScreen";
 
 const Welcome = () => {
   const { isDesktop } = useScreen();
-
-  console.log(isDesktop);
-
   return (
     <Box
       sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        flexDirection: "column",
         textAlign: "center",
         height: "inherit",
         // background:
@@ -33,7 +31,6 @@ const Welcome = () => {
           margin: "auto",
           flexDirection: isDesktop ? "row" : "column",
           width: "calc(100% - 200px)",
-          height: "inherit",
         }}
       >
         <Snowfall style={{ zIndex: 1 }} />
@@ -45,8 +42,8 @@ const Welcome = () => {
           }}
         />
         <Content />
-        <Footer />
       </Box>
+      <Footer />
     </Box>
   );
 };
